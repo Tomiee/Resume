@@ -1,0 +1,180 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #efefef;
+}
+
+header {
+  width: 95%;
+  height: 100px;
+  position: fixed;
+  z-index: 10;
+}
+
+.logo {
+  font-family: "arial black";
+  font-size: 24px;
+  margin-top: 25px;
+  padding-left: 10px;
+  display: block;
+  float: left;
+}
+
+.logo span:first-child {
+  color: #E6686A;
+  margin: 5px;
+}
+
+.logo span:last-child {
+  color: #9A9DA2;
+}
+
+nav {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+nav li {
+  float: left;
+  list-style: none;
+  font-size: 12px;
+  margin-left: 15px;
+  margin-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  font-family: sans-serif;
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
+}
+
+nav li:hover {
+  border-bottom: 3px solid #E06567;
+}
+
+nav li a {
+  color: #B7B7B7;
+}
+
+.mask {
+  background-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 100%;
+}
+
+.banner {
+  background: url(img/bg.jpg) center/cover no-repeat;
+  height: 515px;
+  width: 100%;
+}
+
+.card-box {
+  width: 100%;
+  height: 200px;
+}
+
+.card {
+  position: relative;
+  bottom: 360px;
+  margin: 0 auto;
+  width: 940px;
+  height: 520px;
+  box-shadow: 2px 5px 10px #191412;
+}
+
+.card .content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  background-color: #ffffff;
+}
+
+.card .content img {
+  float: left;
+}
+
+.card .content .info {
+  float: left;
+  margin-left: 150px;
+}
+
+.card .hello {
+  padding: 5px 15px;
+  width: 70px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #e8676b;
+  position: relative;
+}
+
+.card .hello span {
+  border: 10px solid transparent;
+  border-left: 10px solid #e8676b;
+  position: absolute;
+  display: block;
+  left: 10px;
+  bottom: -10px;
+}
+
+.card .content h3 {
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+.card .content p {
+  margin-bottom: 30px;
+}
+
+.card table {
+  margin-top: 30px;
+}
+
+.card th {
+  text-align: left;
+}
+
+.card td {
+  height: 20px;
+  vertical-align: bottom;
+  padding: 10px 10px 10px 40px;
+  color: #B7B7B7;
+}
+
+.card .footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #e8676b;
+  text-align: center;
+  /* line-height: 80px; */
+  padding-top: 25px;
+}
+
+.footer a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 30px;
+}
+
+.footer a:hover{
+  background: #d05c60;
+}
+
+.footer svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+  margin-top: 5px;
+}
