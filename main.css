@@ -231,6 +231,7 @@ header nav li a {
 }
 
 section h1 {
+  font-size: 2em;
   text-align: center;
   margin-bottom: 30px;
 }
