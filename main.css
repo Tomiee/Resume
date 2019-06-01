@@ -178,3 +178,18 @@ nav li a {
   fill: white;
   margin-top: 5px;
 }
+
+
+.test {
+  width: 200px;
+  height: 300px;
+  border: 1px solid red;
+}
+
+.download a {
+  border:1px solid #cdcfd1;
+  padding: 10px 20px;
+  display: inline-block;
+  color: #3d4451;
+  font-weight: bold;
+}
