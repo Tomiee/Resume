@@ -15,12 +15,61 @@
       fill: currentColor;
       overflow: hidden;
     }
+
+    @keyframes loading {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+
+      100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+      }
+    }
+
+    .loading {
+      width: 100%;
+      height: 800px;
+      border: 1px solid red;
+      position: fixed;
+      z-index: 3;
+      background-color: #fff;
+    }
+
+    .loading::before,
+    .loading::after {
+      content: '';
+      background-color: grey;
+      border-radius: 50%;
+      position: absolute;
+      animation: loading 3s linear infinite;
+      width: 0;
+      height: 0;
+      top: 0;
+      left: 0;
+      bottom: 200px;
+      right: 0;
+      margin: auto;
+    }
+
+    .loading::after {
+      animation-delay: 1s;
+      background-color: black;
+    }
+
+    .loading.disappear {
+      display: none;
+    }
   </style>
   <script src="//at.alicdn.com/t/font_1221447_wi9vlvwn19.js"></script>
 </head>
 
 <body>
-  <header>
+  <div id="siteWelcome" class="loading"></div>
+  <header id="header">
     <a class="logo"><span>RS</span><span>card</span></a>
     <nav>
       <ul>
@@ -157,7 +206,14 @@
   </div>
 
 
-
+  <script>
+    window.onscroll = function(){
+      window.scrollY>0?header.classList.add("Sticky"):header.classList.remove("Sticky")
+    }
+    setTimeout(function () {
+      siteWelcome.classList.add("disappear")
+    }, 700)
+  </script>
 </body>
 
 </html>
