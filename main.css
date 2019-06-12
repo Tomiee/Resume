@@ -67,15 +67,58 @@ header nav li {
   padding-bottom: 5px;
   font-family: sans-serif;
   font-weight: 700;
-  border-bottom: 3px solid transparent;
+  position: relative;  
 }
 
-header nav li:hover {
-  border-bottom: 3px solid #E06567;
+header nav li a:hover::after {
+  content: '';
+  display: block;
+  background: #E06567;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  /* bottom: 0; */
+  top: 100%;
+  left: 0;
+  animation: nav_ss 0.3s linear;
+}
+
+@keyframes nav_ss {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 header nav li a {
   color: inherit;
+}
+
+header nav .sub_menu {
+  display: none;
+  position: absolute;
+  /* width: 80px; */
+  white-space:nowrap; 
+  background: #ffffff;
+  left: -100%;
+  top:110%;
+  box-shadow: 0 0 1px 1px rgba(36, 32, 27,0.2);
+  animation: sub_ss 0.3s linear;
+}
+
+@keyframes sub_ss {
+  0% {
+    margin-left: -100%
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+header nav .sub_menu.active{
+  display: block;
 }
 
 .mask {

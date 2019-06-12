@@ -8,6 +8,10 @@
   <title>Resume</title>
   <link rel="stylesheet" href="main.css">
   <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+
     .icon {
       width: 1em;
       height: 1em;
@@ -73,9 +77,21 @@
     <a class="logo"><span>RS</span><span>card</span></a>
     <nav>
       <ul>
-        <li> <a href="javascript:;">关于</a></li>
-        <li> <a href="javascript:;">技能</a></li>
-        <li> <a href="javascript:;">作品</a></li>
+        <li> <a href="#siteAbout">关于</a></li>
+        <li> <a href="#siteSkill">技能</a>
+          <ol class="sub_menu">
+            <li>skill-1</li>
+            <li>skill-2</li>
+            <li>skill-3</li>
+          </ol>
+        </li>
+        <li> <a href="#siteWork">作品</a>
+          <ol class="sub_menu">
+            <li>works-1</li>
+            <li>works-2</li>
+            <li>works-3</li>
+          </ol>
+        </li>
         <li> <a href="javascript:;">博客</a></li>
         <li> <a href="javascript:;">日历</a></li>
         <li> <a href="javascript:;">联系方式</a></li>
@@ -87,7 +103,7 @@
     <div class="mask"></div>
   </div>
 
-  <div class="card-box">
+  <div class="card-box" id="siteAbout">
     <div class="card">
       <div class="content">
         <img src="img/avatar.jpg" alt="">
@@ -140,7 +156,7 @@
   <p class="intro"><strong>龙妈</strong> ——风暴降生丹尼莉丝、不焚者、弥林女王、安达尔人，罗伊那人和先民的女王、七国君王、疆域守护者、多斯拉克大草原的卡丽熙、打碎镣铐者、 龙之母丹妮莉丝·塔格利亚
   </p>
 
-  <section>
+  <section id="siteSkill">
     <h1>技能</h1>
     <div class="skills">
       <ol class="clearfix">
@@ -172,7 +188,7 @@
     </div>
   </section>
 
-  <div class="works">
+  <div class="works" id="siteWork">
     <h1>作品集</h1>
     <nav>
       <ol>
@@ -207,12 +223,37 @@
 
 
   <script>
-    window.onscroll = function(){
-      window.scrollY>0?header.classList.add("Sticky"):header.classList.remove("Sticky")
+    window.onscroll = function () {
+      window.scrollY > 0 ? header.classList.add("Sticky") : header.classList.remove("Sticky")
     }
+
     setTimeout(function () {
       siteWelcome.classList.add("disappear")
     }, 700)
+
+
+    let navs = document.querySelectorAll('header nav ul>li')
+    for (let i = 0; i < navs.length; i++) {
+      navs[i].onmouseenter = function () {
+        this.getElementsByTagName('ol')[0].classList.add('active')
+      }
+      navs[i].onmouseleave = function () {
+        this.getElementsByTagName('ol')[0].classList.remove('active')
+      }
+    }
+
+
+    let aTags = document.querySelectorAll('#header >nav  li >a')
+    for (let i = 0; i < aTags.length; i++) {
+      aTags[i].onclick = function (e) {
+        e.preventDefault();
+        let a = e.currentTarget
+        let href = String(a.getAttribute('href'))
+        let element = document.querySelector(href)
+        let top = element.offsetTop
+        document.querySelector('html').scrollTo(0, top - 70)
+      }
+    }
   </script>
 </body>
 
