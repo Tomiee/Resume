@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="main.css">
   <style type="text/css">
     html {
-      scroll-behavior: smooth;
+      /* scroll-behavior: smooth; */
     }
 
     .icon {
@@ -103,7 +103,7 @@
     <div class="mask"></div>
   </div>
 
-  <div class="card-box" id="siteAbout">
+  <div class="card-box" id="siteAbout" mark>
     <div class="card">
       <div class="content">
         <img src="img/avatar.jpg" alt="">
@@ -156,7 +156,7 @@
   <p class="intro"><strong>龙妈</strong> ——风暴降生丹尼莉丝、不焚者、弥林女王、安达尔人，罗伊那人和先民的女王、七国君王、疆域守护者、多斯拉克大草原的卡丽熙、打碎镣铐者、 龙之母丹妮莉丝·塔格利亚
   </p>
 
-  <section id="siteSkill">
+  <section id="siteSkill" mark class="">
     <h1>技能</h1>
     <div class="skills">
       <ol class="clearfix">
@@ -188,7 +188,7 @@
     </div>
   </section>
 
-  <div class="works" id="siteWork">
+  <div class="works" id="siteWork" mark>
     <h1>作品集</h1>
     <nav>
       <ol>
@@ -205,7 +205,6 @@
         }
         works2.onclick = function () {
           barInner.className = "bar-inner state2"
-          console.log("kao")
         }
         works3.onclick = function () {
           barInner.className = "bar-inner state3"
@@ -232,12 +231,12 @@
     }, 700)
 
 
-    let navs = document.querySelectorAll('header nav ul>li')
-    for (let i = 0; i < navs.length; i++) {
-      navs[i].onmouseenter = function () {
+    let lis = document.querySelectorAll('header nav ul>li')
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].onmouseenter = function () {
         this.getElementsByTagName('ol')[0].classList.add('active')
       }
-      navs[i].onmouseleave = function () {
+      lis[i].onmouseleave = function () {
         this.getElementsByTagName('ol')[0].classList.remove('active')
       }
     }
@@ -251,10 +250,82 @@
         let href = String(a.getAttribute('href'))
         let element = document.querySelector(href)
         let top = element.offsetTop
-        document.querySelector('html').scrollTo(0, top - 70)
+        // document.querySelector('html').scrollTo(0, top - 70)
+
+        let j = 1
+        let current = window.scrollY
+        let tar = (current - (top - 70)) / 50
+        var tarG = top - 70
+        // let scroll_id = setInterval(function(){
+        //   let move = current - tar*j
+        //   window.scrollTo(0,move)
+        //   j++
+        //   if(j==50){
+        //     window.clearInterval(scroll_id)
+        //     return
+        //   }
+        // },20)
+
+        function animate(time) {
+          requestAnimationFrame(animate);
+          TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        const coords = {
+          x: 0,
+          y: current
+        };
+        const tween = new TWEEN.Tween(coords).to({
+            x: 0,
+            y: tarG
+          }, 500)
+          .easing(TWEEN.Easing.Quadratic.Out)
+          .onUpdate(() => {
+            window.scrollTo(0, coords.y)
+          })
+          .start(); // Start the tween immediately.
+      }
+    }
+
+
+    let marks = document.querySelectorAll('[mark]')
+    for (let i = 0; i < marks.length; i++) {
+      marks[i].classList.add('down')
+    }
+
+    let sks = document.querySelectorAll('#siteSkill .skills li span')
+    for (let i = 0; i < sks.length; i++) {
+      sks[i].classList.add('sksShow')
+    }
+
+    window.onscroll = function () {
+      // let marks = document.querySelectorAll('[mark]')
+      let min = 0
+      let current = window.scrollY
+      for (let i = 0; i < marks.length; i++) {
+        if (Math.abs(current - marks[min].offsetTop) > Math.abs(current - marks[i].offsetTop)) {
+          min = i
+        }
+      }
+      let as = document.querySelectorAll('header nav li a')
+      for (let i = 0; i < as.length; i++) {
+        as[i].classList.remove('highLight')
+      }
+      as[min].classList.add('highLight')
+      //   for (let i = 0; i < marks.length ; i++){
+      //     marks[i].classList.add('rollUp')
+      //   }
+      marks[min].classList.remove('down')
+      marks[min].classList.add('up')
+      if(min == 1){
+        for(let i = 0;i<sks.length;i++){
+          sks[i].classList.remove('sksShow')
+        }
       }
     }
   </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.4.0/Tween.min.js'></script>
 </body>
 
 </html>

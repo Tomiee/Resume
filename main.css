@@ -70,7 +70,8 @@ header nav li {
   position: relative;  
 }
 
-header nav li a:hover::after {
+header nav li a:hover::after,
+header nav li a.highLight::after{
   content: '';
   display: block;
   background: #E06567;
@@ -91,6 +92,28 @@ header nav li a:hover::after {
     width: 100%;
   }
 }
+
+[mark].down {
+  transform: translateY(250px);
+} 
+
+[mark].up {
+  animation: up 0.7s linear;
+}
+
+@keyframes up {
+  0% {
+    transform: translateY(250px);
+  }
+  20% {
+    transform: translateY(250px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
 
 header nav li a {
   color: inherit;
@@ -313,6 +336,7 @@ section h1 {
   width: 100%;
   border-radius: 3px;
   margin: 10px 0;
+  overflow: hidden;
 }
 
 .skills li>div>span {
@@ -321,6 +345,11 @@ section h1 {
   height: 5px;
   border-radius: 5px;
   width: 40%;
+  transition: all 1.5s linear;
+}
+
+.skills li>div>span.sksShow {
+  transform: translateX(-300px)
 }
 
 .works {
