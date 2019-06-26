@@ -415,3 +415,20 @@ section h1 {
   margin: 0;
 }
 
+#comment {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#comment ul {
+  border: 1px solid red;
+}
+
+#comment ul li {
+  display: block;
+}
+
+#comment ul li span {
+  display: inline-block;
+  width: 200px;
+}
